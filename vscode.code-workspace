@@ -1,0 +1,29 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      "eamodio.gitlens",
+      "ms-python.python",
+      "dbaeumer.vscode-eslint",
+    ]
+  },
+  "settings": {
+    "eslint.autoFixOnSave": true,
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      { "language": "typescript", "autoFix": true },
+      { "language": "typescriptreact", "autoFix": true }
+    ],
+    "eslint.workingDirectories": [
+      { 
+        "directory" : "./app", 
+        "changeProcessCWD": true
+      }
+    ]
+  }
+}
