@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Button, Input } from "reactstrap";
 import { connect } from "react-redux";
+import { Button, Input } from "reactstrap";
 
+import { AppState, selectors } from "redux/store";
 import * as exampleActions from "redux/actions/exampleActions";
-import { selectors, AppState } from "redux/store";
 
 interface OwnProps {
   exampleProp: string;
