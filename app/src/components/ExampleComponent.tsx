@@ -1,17 +1,9 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { Button, Input } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
-// import { createSelector } from "reselect";
 
 import * as exampleActions from "redux/actions/exampleActions";
 import { AppState, selectors } from "redux/store";
-
-// const exampleMemoizedSelector = createSelector(
-//   [(state: AppState) => state.example.data],
-//   data => {
-//     return data + "!!!";
-//   }
-// );
 
 interface Props {
   exampleProp: string;
