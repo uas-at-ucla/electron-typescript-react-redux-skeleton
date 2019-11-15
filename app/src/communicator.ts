@@ -16,19 +16,21 @@ class Communicator {
   }
 
   initSocket(): SocketIOClient.Socket {
-    this.socket = socketIOClient("http://example.ip.address:portnumber");
+    this.socket = socketIOClient("http://localhost:8080");
 
-    this.socket.on("connect", (): void => {
+    this.socket.on("connect", () => {
       this.store.dispatch(externalActions.serverConnected());
     });
 
-    this.socket.on("disconnect", (): void => {
+    this.socket.on("disconnect", () => {
       this.store.dispatch(externalActions.serverDisconnected());
     });
 
-    this.socket.on("EXAMPLE_MESSAGE", (data: string) => {
-      this.store.dispatch(externalActions.exampleMessageReceived(data));
-      alert("Message Received!"); // This is also a good place to show alerts
+    this.socket.on("MSG", (type: string, data: any) => {
+      if (type === "SENSORS") {
+        this.store.dispatch(externalActions.messageReceived(data));
+      }
+      // alert("Message Received!"); // This is also a good place to show alerts
     });
 
     return this.socket;
