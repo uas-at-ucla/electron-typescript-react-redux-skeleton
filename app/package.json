@@ -38,8 +38,7 @@
     "package-<platform>": "Create standalone executable for a specific platform. Platform-specific command line options for electron-packager can be set."
   },
   "dependencies": {
-    "electron-is-dev": "^1.1.0",
-    "immer": "^4.0.1"
+    "electron-is-dev": "^1.1.0"
   },
   "dependenciesComments": {
     "electron-is-dev": "Detect if electron is running in development mode"
@@ -64,8 +63,10 @@
     "electron-packager": "^14.0.5",
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-no-autofix": "0.0.3",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
+    "immer": "^5.1.0",
     "prettier": "^1.18.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
