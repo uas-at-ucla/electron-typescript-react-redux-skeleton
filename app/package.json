@@ -58,7 +58,7 @@
     "check-dependencies": "^1.1.0",
     "concurrently": "^4.1.2",
     "cross-env": "^5.2.0",
-    "electron": "^6.0.5",
+    "electron": "^7.2.4",
     "electron-devtools-installer": "^2.2.4",
     "electron-packager": "^14.0.5",
     "eslint": "^6.2.2",
