@@ -5,7 +5,7 @@ import * as externalActions from "./externalActions";
 
 const allActions = {
   ...exampleActions,
-  ...externalActions
+  ...externalActions,
 };
 
 const allActionsArray = Object.values(allActions);

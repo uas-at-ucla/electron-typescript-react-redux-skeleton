@@ -2,14 +2,14 @@
 
 // For example:
 export const serverConnected = () => ({
-  type: "SERVER_CONNECTED" as const
+  type: "SERVER_CONNECTED" as const,
 });
 
 export const serverDisconnected = () => ({
-  type: "SERVER_DISCONNECTED" as const
+  type: "SERVER_DISCONNECTED" as const,
 });
 
 export const messageReceived = (data: { position: number }) => ({
   type: "MESSAGE_RECEIVED" as const,
-  payload: data
+  payload: data,
 });

@@ -3,7 +3,7 @@ import { AppState } from "../store";
 
 export const exampleDerivedData = createSelector(
   [(state: AppState) => state.example.data],
-  data => {
+  (data) => {
     return data + "!!!";
   }
 );

@@ -6,7 +6,7 @@ interface ExampleState {
 }
 
 const initialState: ExampleState = {
-  data: "Initial value"
+  data: "Initial value",
 };
 
 export default produce((draftState: ExampleState, action: AppAction) => {

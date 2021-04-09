@@ -4,23 +4,23 @@ import { Button, Input } from "reactstrap";
 
 import { AppState, selectors } from "redux/store";
 import * as exampleActions from "redux/actions/exampleActions";
+import { ExtractPropsType } from "utils/reduxUtils";
 
 interface OwnProps {
   exampleProp: string;
 }
 
-const mapStateToProps = (state: AppState) => {
+const mapStateToProps = (state: AppState, props: OwnProps) => {
   return {
     message: state.example.data,
-    messageWithEmphasis: selectors.example.exampleDerivedData(state)
+    messageWithEmphasis: selectors.example.exampleDerivedData(state),
   };
 };
 
 const mapDispatchToProps = exampleActions;
 
-type Props = OwnProps &
-  ReturnType<typeof mapStateToProps> &
-  (typeof mapDispatchToProps);
+const connectComponent = connect(mapStateToProps, mapDispatchToProps);
+type Props = ExtractPropsType<typeof connectComponent>;
 
 const ExampleComponent = (props: Props) => {
   const [input, setInput] = useState("");
@@ -34,7 +34,7 @@ const ExampleComponent = (props: Props) => {
       <p>{props.exampleProp}</p>
       <div>
         <Input
-          onChange={event => setInput(event.target.value)}
+          onChange={(event) => setInput(event.target.value)}
           value={input}
         ></Input>
         <Button onClick={() => props.exampleAction(input)}>
@@ -45,7 +45,4 @@ const ExampleComponent = (props: Props) => {
   );
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ExampleComponent);
+export default connectComponent(ExampleComponent);

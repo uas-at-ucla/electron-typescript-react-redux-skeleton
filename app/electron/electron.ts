@@ -1,6 +1,7 @@
 import { app, BrowserWindow, Menu, MenuItem, protocol } from "electron";
 import * as path from "path";
 import * as isDev from "electron-is-dev";
+import type * as electronDevtoolsInstaller from "electron-devtools-installer";
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -12,13 +13,13 @@ function createWindow() {
     const {
       default: installExtension,
       REACT_DEVELOPER_TOOLS,
-      REDUX_DEVTOOLS
-    } = require("electron-devtools-installer");
+      REDUX_DEVTOOLS,
+    } = require("electron-devtools-installer") as typeof electronDevtoolsInstaller;
 
     const RESELECT_DEVTOOLS = "cjmaipngmabglflfeepmdiffcijhjlbb"; // Chrome store ID
 
     [REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS, RESELECT_DEVTOOLS].forEach(
-      extension => {
+      (extension) => {
         installExtension(extension)
           .then((name: string) => console.log(`Added Extension: ${name}`))
           .catch((err: string) => console.log("An error occurred: ", err));
@@ -28,20 +29,14 @@ function createWindow() {
 
   // Handle the file:// protocol for files in build/static
   if (!isDev) {
-    protocol.interceptFileProtocol(
-      "file",
-      (request, callback) => {
-        const url = request.url.substr(7); // Remove "file://"
-        if (url.startsWith("/static")) {
-          callback(path.normalize(`${__dirname}/../build/${url}`));
-        } else {
-          callback(url);
-        }
-      },
-      error => {
-        if (error) console.error("Failed to register file protocol", error);
+    protocol.interceptFileProtocol("file", (request, callback) => {
+      const url = decodeURI(request.url).substr(7); // Remove "file://"
+      if (url.startsWith("/static")) {
+        callback(path.normalize(`${__dirname}/../build/${url}`));
+      } else {
+        callback(url);
       }
-    );
+    });
   }
 
   // Create the browser window.
@@ -50,12 +45,12 @@ function createWindow() {
     height: 600,
     icon: path.join(__dirname, "icon.png"),
     webPreferences: {
-      nodeIntegration: true // expose Node.js require() as window.require() in web app
-    }
+      nodeIntegration: true, // expose Node.js require() as window.require() in web app
+    },
   });
 
   // and load the url of the app.
-  mainWindow.loadURL(
+  void mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
       : `file://${path.join(__dirname, "../build/index.html")}`
@@ -79,10 +74,10 @@ function createWindow() {
     const template = [
       new MenuItem({
         label: "Application",
-        submenu: menuRoles.map(role => {
+        submenu: menuRoles.map((role) => {
           return { role: role };
-        })
-      })
+        }),
+      }),
     ];
     const menu = Menu.buildFromTemplate(template);
     Menu.setApplicationMenu(menu);
@@ -95,7 +90,7 @@ function createWindow() {
 app.on("ready", createWindow);
 
 // Quit when all windows are closed.
-app.on("window-all-closed", function() {
+app.on("window-all-closed", function () {
   app.quit();
 });
 
@@ -143,5 +138,5 @@ const menuRoles = [
   "mergeAllWindows",
   "clearRecentDocuments",
   "moveTabToNewWindow",
-  "windowMenu"
+  "windowMenu",
 ] as const;
