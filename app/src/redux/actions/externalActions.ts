@@ -9,7 +9,7 @@ export const serverDisconnected = () => ({
   type: "SERVER_DISCONNECTED" as const,
 });
 
-export const messageReceived = (data: { position: number }) => ({
-  type: "MESSAGE_RECEIVED" as const,
+export const exampleMessageReceived = (data: number) => ({
+  type: "EXAMPLE_MESSAGE_RECEIVED" as const,
   payload: data,
 });

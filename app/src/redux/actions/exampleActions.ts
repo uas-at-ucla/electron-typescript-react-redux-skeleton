@@ -4,12 +4,10 @@ export const exampleAction = (payload: string) => ({
 });
 
 // "TRANSMIT" actions are caught by the communicator middleware to send a message to the outside world
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const transmitAction = (msg: string, data: any) => ({
+export const transmitAction = (msg: string, data: unknown) => ({
   type: "TRANSMIT" as const,
   payload: {
     msg: msg,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     data: data,
   },
 });

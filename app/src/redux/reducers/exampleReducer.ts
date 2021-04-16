@@ -15,8 +15,8 @@ export default produce((draftState: ExampleState, action: AppAction) => {
       draftState.data = action.payload;
       return;
     }
-    case "MESSAGE_RECEIVED": {
-      draftState.data = action.payload.position.toString();
+    case "EXAMPLE_MESSAGE_RECEIVED": {
+      draftState.data = action.payload.toString();
     }
   }
-}, initialState) as (a: any, b: any) => ExampleState;
+}, initialState) as (a: unknown, b: unknown) => ExampleState;

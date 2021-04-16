@@ -10,7 +10,7 @@ interface OwnProps {
   exampleProp: string;
 }
 
-const mapStateToProps = (state: AppState, props: OwnProps) => {
+const mapStateToProps = (state: AppState, _props: OwnProps) => {
   return {
     message: state.example.data,
     messageWithEmphasis: selectors.example.exampleDerivedData(state),

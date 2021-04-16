@@ -26,10 +26,8 @@ class Communicator {
       this.store.dispatch(externalActions.serverDisconnected());
     });
 
-    this.socket.on("MSG", (type: string, data: any) => {
-      if (type === "SENSORS") {
-        this.store.dispatch(externalActions.messageReceived(data));
-      }
+    this.socket.on("EXAMPLE_MSG", (data: number) => {
+      this.store.dispatch(externalActions.exampleMessageReceived(data));
       // alert("Message Received!"); // This is also a good place to show alerts
     });
 
