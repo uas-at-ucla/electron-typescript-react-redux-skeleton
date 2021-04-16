@@ -19,4 +19,4 @@ export default produce((draftState: ExampleState, action: AppAction) => {
       draftState.data = action.payload.toString();
     }
   }
-}, initialState) as (a: unknown, b: unknown) => ExampleState;
+}, initialState);
