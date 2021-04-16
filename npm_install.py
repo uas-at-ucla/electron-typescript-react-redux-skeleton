@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# Running this script achieves the same thing as `npm install` in the app folder, 
+# but is much faster at detecting if you already have everything installed.
+
 import os
 import sys
 import subprocess
