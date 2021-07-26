@@ -43,8 +43,9 @@ jobs:
       - name: Create GitHub Release
         if: github.event_name == 'push'
         uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: latest-master
           files: |
             app/release-builds/App-linux-x64.zip
