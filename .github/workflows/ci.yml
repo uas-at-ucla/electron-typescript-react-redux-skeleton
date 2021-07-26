@@ -36,9 +36,9 @@ jobs:
           CI=false npm run package-mac
           CI=false npm run package-win
           cd release-builds
-          zip -r App-linux-x64.zip App-linux-x64
-          zip -r App-darwin-x64.zip App-darwin-x64
-          zip -r App-win32-x64.zip App-win32-x64
+          zip -r -y App-linux-x64.zip App-linux-x64
+          zip -r -y App-darwin-x64.zip App-darwin-x64
+          zip -r -y App-win32-x64.zip App-win32-x64
 
       - name: Create GitHub Release
         if: github.event_name == 'push'
