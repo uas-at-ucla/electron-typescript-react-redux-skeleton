@@ -5,7 +5,7 @@ import ExampleComponent from "./ExampleComponent";
 
 const App = () => {
   return (
-    <div>
+    <div className="App">
       <h1>Welcome!</h1>
       <ExampleComponent exampleProp="This string was passed from the parent component"></ExampleComponent>
     </div>

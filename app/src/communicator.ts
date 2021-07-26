@@ -1,4 +1,4 @@
-import socketIOClient from "socket.io-client";
+import socketIOClient, { Socket } from "socket.io-client";
 import { Dispatch, Middleware, MiddlewareAPI } from "redux";
 import { AppAction } from "redux/actions/actionTypes";
 import * as externalActions from "redux/actions/externalActions";
@@ -7,7 +7,7 @@ import * as externalActions from "redux/actions/externalActions";
 
 class Communicator {
   store: MiddlewareAPI;
-  socket: SocketIOClient.Socket;
+  socket: Socket;
 
   constructor(store: MiddlewareAPI) {
     console.log("Initializing communicator");
@@ -15,7 +15,7 @@ class Communicator {
     this.socket = this.initSocket();
   }
 
-  initSocket(): SocketIOClient.Socket {
+  initSocket(): Socket {
     this.socket = socketIOClient("http://localhost:8080");
 
     this.socket.on("connect", () => {

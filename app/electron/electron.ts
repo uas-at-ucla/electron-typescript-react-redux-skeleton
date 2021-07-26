@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu, MenuItem, protocol } from "electron";
+import { app, BrowserWindow, Menu, MenuItem } from "electron";
 import path from "path";
 import isDev from "electron-is-dev";
 import type * as electronDevtoolsInstaller from "electron-devtools-installer";
@@ -28,18 +28,6 @@ function createWindow() {
     );
   }
 
-  // Handle the file:// protocol for files in build/static
-  if (!isDev) {
-    protocol.interceptFileProtocol("file", (request, callback) => {
-      const url = decodeURI(request.url).substr(7); // Remove "file://"
-      if (url.startsWith("/static")) {
-        callback(path.normalize(`${__dirname}/../build/${url}`));
-      } else {
-        callback(url);
-      }
-    });
-  }
-
   contextMenu(); // Create right-click menu, including Inspect Element in development mode
 
   // Create the browser window.
@@ -48,7 +36,11 @@ function createWindow() {
     height: 600,
     icon: path.join(__dirname, "icon.png"),
     webPreferences: {
-      nodeIntegration: true, // expose Node.js require() as window.require() in web app
+      // Warning: These settings create a security vulnerability if the app loads remote content (See https://www.electronjs.org/docs/tutorial/security#checklist-security-recommendations)
+      nodeIntegration: true, // Expose Node.js require() as window.require() in web app
+      contextIsolation: false, // Also needed to get access to window.require()
+      enableRemoteModule: true, // Get access to the Electron remote module via window.require("electron").remote
+      // webSecurity: false, // This would allow embedding content from the filesystem and other sources, but is insecure. More info: https://www.electronjs.org/docs/tutorial/security#5-do-not-disable-websecurity
     },
   });
 
@@ -126,14 +118,13 @@ const menuRoles = [
   "quit",
   "startSpeaking",
   "stopSpeaking",
-  "close",
-  "minimize",
   "zoom",
   "front",
   "appMenu",
   "fileMenu",
   "editMenu",
   "viewMenu",
+  "shareMenu",
   "recentDocuments",
   "toggleTabBar",
   "selectNextTab",
