@@ -47,6 +47,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: latest-master
+          draft: true
           files: |
             app/release-builds/App-linux-x64.zip
             app/release-builds/App-darwin-x64.zip
