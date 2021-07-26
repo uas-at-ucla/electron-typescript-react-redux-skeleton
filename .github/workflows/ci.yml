@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          cd app
+          npm install
+          CI=false npm run build
+
+      - name: Package
+        if: github.event_name == 'push'
+        run: |
+          cd app
+          CI=false npm run package-linux
+          CI=false npm run package-mac
+          CI=false npm run package-win
+          cd release-builds
+          zip -r FlightDeck-linux-x64.zip FlightDeck-linux-x64
+          zip -r FlightDeck-darwin-x64.zip FlightDeck-darwin-x64
+          zip -r FlightDeck-win32-x64.zip FlightDeck-win32-x64
+
+      - name: Release
+        if: github.event_name == 'push'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            app/release-builds/FlightDeck-linux-x64.zip
+            app/release-builds/FlightDeck-darwin-x64.zip
+            app/release-builds/FlightDeck-win32-x64.zip
