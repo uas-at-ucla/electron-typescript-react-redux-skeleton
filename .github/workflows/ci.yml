@@ -10,7 +10,7 @@ on:
       - master
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,14 +22,17 @@ jobs:
           npm install
           CI=false npm run build
 
+  release-electron-app:
+    needs: build-and-test
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
       - name: Install Wine for packaging on Windows
-        if: github.event_name == 'push'
         run: |
           sudo apt-get update -y
           sudo apt-get install -y wine64
 
       - name: Package
-        if: github.event_name == 'push'
         run: |
           cd app
           CI=false npm run package-linux
@@ -41,9 +44,9 @@ jobs:
           zip -r App-win32-x64.zip App-win32-x64
 
       - name: Release
-        if: github.event_name == 'push'
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: latest-master
           files: |
             app/release-builds/App-linux-x64.zip
             app/release-builds/App-darwin-x64.zip
