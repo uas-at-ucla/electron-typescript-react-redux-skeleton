@@ -1,23 +1,17 @@
 {
-    "parser": "@typescript-eslint/parser",
     "extends": [
+        "react-app", // Create React App base settings
+        "react-app/jest",
         "eslint:recommended", // ESLint base recommended rules
-        "plugin:@typescript-eslint/eslint-recommended", // Disable ESLint rules that conflict with @typescript-eslint rules
         "plugin:@typescript-eslint/recommended", // @typescript-eslint recommended rules
         "plugin:@typescript-eslint/recommended-requiring-type-checking", // @typescript-eslint recommended rules that involve type checking
-        "plugin:react/recommended", // React recommended linting rules
         "prettier", // Disable ESLint rules that conflict with Prettier
         "plugin:prettier/recommended" // Recommended Prettier formatting rules
     ],
     "parserOptions": {
-        "project": "./tsconfig.json",
-        "ecmaVersion": 2018,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
-        }
+        "project": "./tsconfig.json"
     },
-    "plugins": ["no-autofix", "react-hooks"],
+    "plugins": ["no-autofix"],
     "rules": {
         "@typescript-eslint/explicit-function-return-type": "off", // Typescript does an amazing job at inferring function return types, so this almost never needed
         "@typescript-eslint/explicit-module-boundary-types": "off", // Same explanation as above
@@ -25,13 +19,6 @@
         "@typescript-eslint/no-var-requires": "off", // Require shouldn't be used most of the time, but it is needed to import packages that don't support TypeScript
         "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }], // Variables that begin with an underscore won't trigger the no-unused-vars warning
         "prefer-const": "off",
-        "no-autofix/prefer-const": "error",
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
-    },
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
+        "no-autofix/prefer-const": "error"
     }
 }

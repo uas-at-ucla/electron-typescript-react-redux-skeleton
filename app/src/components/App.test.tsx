@@ -1,16 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import App from "./App";
 import store from "redux/store";
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
-  ReactDOM.render(
+test("renders welcome text", () => {
+  render(
     <Provider store={store}>
       <App />
-    </Provider>,
-    div
+    </Provider>
   );
-  ReactDOM.unmountComponentAtNode(div);
+  const welcomeElement = screen.getByText(/Welcome!/i);
+  expect(welcomeElement).toBeInTheDocument();
 });

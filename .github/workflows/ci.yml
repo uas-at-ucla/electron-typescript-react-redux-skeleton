@@ -27,7 +27,7 @@ jobs:
           cd app
           npm test
 
-      - name: Install Wine for packaging on Windows
+      - name: Install Wine for packaging for Windows
         if: github.event_name == 'push'
         run: |
           sudo apt-get update -y

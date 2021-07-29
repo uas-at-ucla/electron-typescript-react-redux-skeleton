@@ -1,5 +1,5 @@
-import pathImport from "path";
-import fsImport from "fs";
+import type pathImport from "path";
+import type fsImport from "fs";
 
 const electron = window.require ? window.require("electron") : undefined;
 export const path = window.require

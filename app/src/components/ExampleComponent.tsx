@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Button, Input } from "reactstrap";
 
 import { AppState, selectors } from "redux/store";
 import * as exampleActions from "redux/actions/exampleActions";
@@ -27,7 +26,7 @@ const mapDispatchToProps = exampleActions;
 const connectComponent = connect(mapStateToProps, mapDispatchToProps);
 type Props = ExtractPropsType<typeof connectComponent>;
 
-const ExampleComponent = (props: Props) => {
+function ExampleComponent(props: Props) {
   const [input, setInput] = useState("");
 
   return (
@@ -49,16 +48,16 @@ const ExampleComponent = (props: Props) => {
         </p>
       )}
       <div>
-        <Input
+        <input
           onChange={(event) => setInput(event.target.value)}
           value={input}
-        ></Input>
-        <Button onClick={() => props.exampleAction(input)}>
+        ></input>
+        <button onClick={() => props.exampleAction(input)}>
           Dispatch Action!
-        </Button>
+        </button>
       </div>
     </div>
   );
-};
+}
 
 export default connectComponent(ExampleComponent);
