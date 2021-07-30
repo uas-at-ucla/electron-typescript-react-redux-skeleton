@@ -9,7 +9,7 @@ export const fs = window.require
   ? (window.require("fs") as typeof fsImport)
   : undefined;
 
-const app = electron ? electron.remote.app : undefined;
+const app = electron ? electron.app : undefined;
 const appPath = app ? app.getAppPath() : undefined;
 
 export const userDataPath = app ? app.getPath("userData") : undefined;

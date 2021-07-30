@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-// TODO organize imports when addint tailwind
-import App from "./components/App";
+import { VechaiProvider } from "@vechaiui/react";
+
 import "./index.css";
+import App from "./components/App";
 import store from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
 
@@ -23,9 +24,11 @@ if (process.env.NODE_ENV === "development") {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <VechaiProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </VechaiProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

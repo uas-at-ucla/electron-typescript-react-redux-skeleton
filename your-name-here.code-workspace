@@ -9,6 +9,8 @@
       "eamodio.gitlens",
       "ms-python.python",
       "dbaeumer.vscode-eslint",
+      "csstools.postcss",
+      "bradlc.vscode-tailwindcss"
     ]
   },
   "settings": {

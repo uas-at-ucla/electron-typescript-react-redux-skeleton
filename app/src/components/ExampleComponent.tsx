@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
+import { Button, Input } from "@vechaiui/react";
 
 import { AppState, selectors } from "redux/store";
 import * as exampleActions from "redux/actions/exampleActions";
@@ -31,30 +32,36 @@ function ExampleComponent(props: Props) {
 
   return (
     <div className="ExampleComponent">
-      <h1>{props.message}</h1>
-      <h1>
+      <p>{props.message}</p>
+      <p className="mb-4">
         <b>{props.messageWithEmphasis}</b>
-      </h1>
-      <p>{props.exampleProp}</p>
+      </p>
+      <p className="mb-4">{props.exampleProp}</p>
       {parentFolder && parentFolderFileList ? (
-        <p>{`The folder ${parentFolder} contains: ${parentFolderFileList.join(
+        <p className="mb-4">{`The folder ${parentFolder} contains: ${parentFolderFileList.join(
           ", "
         )}`}</p>
       ) : (
-        <p>
+        <p className="mb-4">
           {
             "Can't access NodeJS/Electron modules, so this must be running in the browser"
           }
         </p>
       )}
       <div>
-        <input
+        <Input
+          className="w-auto mr-2"
+          placeholder="Type something!"
           onChange={(event) => setInput(event.target.value)}
           value={input}
-        ></input>
-        <button onClick={() => props.exampleAction(input)}>
+        ></Input>
+        <Button
+          variant="solid"
+          color="primary"
+          onClick={() => props.exampleAction(input)}
+        >
           Dispatch Action!
-        </button>
+        </Button>
       </div>
     </div>
   );
