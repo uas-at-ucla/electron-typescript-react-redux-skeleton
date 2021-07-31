@@ -28,6 +28,9 @@
     ],
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
+    },
+    "editor.quickSuggestions": {
+      "strings": true,
     }
   }
 }

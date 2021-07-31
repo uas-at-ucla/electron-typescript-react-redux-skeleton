@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'jit',
   purge: [
-    './src/**/*.{js,jsx,ts,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}',
     './public/index.html',
     './node_modules/@vechaiui/**/*.{js,ts,jsx,tsx}',
   ],
@@ -14,6 +14,5 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/forms'),
-    require('@vechaiui/core'),
   ],
 }
