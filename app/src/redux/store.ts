@@ -13,7 +13,7 @@ const reducer = combineReducers({
 });
 export type AppState = ReturnType<typeof reducer>;
 
-// Apply communicator middleware for sending and receiving data from server
+// Apply communicator middleware for sending and receiving data over the network or IPC
 const middleware = applyMiddleware(communicator);
 
 // Create store

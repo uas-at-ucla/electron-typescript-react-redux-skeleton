@@ -3,6 +3,11 @@
 # Running this script achieves the same thing as `npm install` in the app folder, 
 # but is much faster at detecting if you already have everything installed.
 
+# A possible use case for this is:
+#   - You are part of a team of developers that work on different computers.
+#   - Your app is part of a larger set of programs that are run together (e.g. this app plus a backend).
+#   - You have automated scripts that run these programs and want to quickly ensure that all the app dependencies are installed.
+
 import os
 import sys
 import subprocess

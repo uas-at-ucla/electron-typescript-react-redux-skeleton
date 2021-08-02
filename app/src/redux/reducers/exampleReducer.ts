@@ -16,7 +16,8 @@ export default produce((draftState: ExampleState, action: AppAction) => {
       return;
     }
     case "EXAMPLE_MESSAGE_RECEIVED": {
-      draftState.data = action.payload.toString();
+      draftState.data = action.payload;
+      return;
     }
   }
 }, initialState);
