@@ -25,7 +25,7 @@ jobs:
       - name: Test
         run: |
           cd app
-          npm test
+          echo "There aren't any tests yet"
 
       - name: Install Wine for packaging for Windows
         if: github.event_name == 'push'
