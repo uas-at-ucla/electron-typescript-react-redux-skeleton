@@ -9,5 +9,6 @@ export default defineConfig({
     reactRefresh(),
     tsconfigPaths(),
     html()
-  ]
+  ],
+  base: './' // Load static assets correctly in production
 })

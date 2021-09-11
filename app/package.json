@@ -2,8 +2,6 @@
   "name": "app",
   "version": "0.0.0",
   "main": "electron/electron.js",
-  "homepage": "./",
-  "//homepageComment": "This is required for React to use the correct path for file:// requests in production",
   "scripts": {
     "react-start": "vite",
     "electron-start": "npm run electron-build && cross-env ELECTRON_IS_DEV=1 electron .",
