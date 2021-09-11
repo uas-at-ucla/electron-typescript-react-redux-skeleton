@@ -40,6 +40,7 @@ function createWindow() {
       nodeIntegration: true, // Expose Node.js require() as window.require() in web app
       contextIsolation: false, // Also needed to get access to window.require()
       // webSecurity: false, // This would allow embedding content from the filesystem and other sources, but is insecure. More info: https://www.electronjs.org/docs/tutorial/security#5-do-not-disable-websecurity
+      additionalArguments: [app.getAppPath(), app.getPath("userData")],
     },
   });
 

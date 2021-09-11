@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "App",
   "version": "0.0.0",
   "main": "electron/electron.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "concurrently \"npm run react-start\" \"wait-on -c wait-on.config.js http-get://localhost:3000/ && npm run electron-start\"",
     "start-web": "vite --port 3001",
     "start-prod": "cross-env ELECTRON_IS_DEV=0 electron .",
-    "react-build": "tsc && vite build",
+    "react-build": "tsc --project tsconfig.react.json && vite build",
     "electron-build": "tsc --project tsconfig.electron.json",
     "build": "npm run electron-build && npm run react-build",
     "lint": "eslint ./src ./electron --ext .ts,.tsx",

@@ -44,7 +44,7 @@ function ExampleComponent(props: Props) {
       ) : (
         <p className="mb-4">
           {
-            "TODO Can't access NodeJS/Electron modules, so this must be running in the browser"
+            "Can't access NodeJS modules from Electron, so this must be running in the browser"
           }
         </p>
       )}
