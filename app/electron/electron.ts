@@ -39,7 +39,6 @@ function createWindow() {
       // Warning: These settings create a security vulnerability if the app loads remote content (See https://www.electronjs.org/docs/tutorial/security#checklist-security-recommendations)
       nodeIntegration: true, // Expose Node.js require() as window.require() in web app
       contextIsolation: false, // Also needed to get access to window.require()
-      enableRemoteModule: true, // Get access to the Electron remote module via window.require("electron").remote
       // webSecurity: false, // This would allow embedding content from the filesystem and other sources, but is insecure. More info: https://www.electronjs.org/docs/tutorial/security#5-do-not-disable-websecurity
     },
   });
@@ -48,7 +47,7 @@ function createWindow() {
   void mainWindow.loadURL(
     isDev
       ? "http://localhost:3000"
-      : `file://${path.join(__dirname, "../build/index.html")}`
+      : `file://${path.join(__dirname, "../dist/index.html")}`
   );
 
   if (isDev) {

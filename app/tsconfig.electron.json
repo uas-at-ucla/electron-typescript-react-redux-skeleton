@@ -2,9 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
-    "noEmit": false,
+    "esModuleInterop": true,
+    "noEmit": false
   },
-  "include": [
-    "electron"
-  ]
+  "include": ["./electron"]
 }

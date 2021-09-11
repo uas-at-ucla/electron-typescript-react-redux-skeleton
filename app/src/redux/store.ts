@@ -6,6 +6,7 @@ import communicator from "communicator";
 import exampleReducer from "./reducers/exampleReducer";
 
 import * as exampleSelectors from "./selectors/exampleSelectors";
+import { getStateWith, registerSelectors } from "reselect-tools";
 
 // Reducer setup
 const reducer = combineReducers({
@@ -26,10 +27,6 @@ export const selectors = {
 // Reselect Devtools setup:
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const selectorNames = Object.assign({}, ...Object.values(selectors));
-const { getStateWith, registerSelectors } = require("reselect-tools") as {
-  getStateWith: (getState: () => AppState) => void;
-  registerSelectors: (selectors: typeof selectorNames) => void;
-};
 registerSelectors(selectorNames); // register string names for selectors
 getStateWith(() => store.getState()); // allows you to get selector inputs and outputs
 

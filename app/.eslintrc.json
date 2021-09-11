@@ -1,7 +1,6 @@
 {
     "extends": [
-        "react-app", // Create React App base settings
-        "react-app/jest",
+        "react-app", // React base settings
         "eslint:recommended", // ESLint base recommended rules
         "plugin:@typescript-eslint/recommended", // @typescript-eslint recommended rules
         "plugin:@typescript-eslint/recommended-requiring-type-checking", // @typescript-eslint recommended rules that involve type checking
@@ -11,7 +10,7 @@
     "parserOptions": {
         "project": "./tsconfig.json"
     },
-    "ignorePatterns": ["*.config.js"],
+    "ignorePatterns": ["*.config.js", "*.config.ts"],
     "plugins": ["no-autofix"],
     "rules": {
         "@typescript-eslint/explicit-function-return-type": "off", // Typescript does an amazing job at inferring function return types, so this almost never needed
