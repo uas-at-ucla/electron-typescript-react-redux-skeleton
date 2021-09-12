@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import html from 'vite-plugin-html'
-import eslintPlugin from 'vite-plugin-eslint'
+import checker from 'vite-plugin-checker'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,7 +10,13 @@ export default defineConfig({
     reactRefresh(),
     tsconfigPaths(),
     html(),
-    eslintPlugin({'cache': false}) // TODO Cache feature needs to be fixed in vite-plugin-eslint (https://github.com/gxmari007/vite-plugin-eslint/issues/11)
+    checker({
+      typescript: true,
+      eslint: {
+        files: ['./src'],
+        extensions: ['.ts', '.tsx'],
+      },
+    })
   ],
   base: './' // Load static assets correctly in production
 })

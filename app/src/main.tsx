@@ -36,9 +36,9 @@ window.addEventListener("error", (errorEvent) => {
           : "",
       loc: {
         file:
-          relativePath(new URL(errorEvent.filename).pathname) ||
+          relativePath(new URL(errorEvent.filename).pathname) ??
           errorEvent.filename,
-        line: errorEvent.lineno,
+        line: errorEvent.lineno, // Note that line numbers are not accurate
         column: errorEvent.colno,
       },
     };

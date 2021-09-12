@@ -18,5 +18,5 @@
     "jsx": "react",
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["./src", "./electron"]
+  "include": ["./src"]
 }
