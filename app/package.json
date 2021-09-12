@@ -74,6 +74,7 @@
     "tailwindcss": "^2.2.15",
     "typescript": "^4.3.2",
     "vite": "^2.5.4",
+    "vite-plugin-eslint": "^1.3.0",
     "vite-plugin-html": "^2.1.0",
     "vite-tsconfig-paths": "^3.3.14",
     "wait-on": "^6.0.0"
@@ -112,6 +113,7 @@
     "tailwindcss": "Provides lots of CSS classes to make it easier to style HTML using the class attribute, along with other powerful styling tools",
     "typescript": "PRIMARY LIBRARY. Typed superset of JavaScript. With editor support, catches errors and adds clarity to JavaScript. Provides the `tsc` command for compiling.",
     "vite": "Build tool used to initialize the app folder",
+    "vite-plugin-eslint": "Enable Vite to catch ESLint errors",
     "vite-plugin-html": "Support EJS in index.html",
     "vite-tsconfig-paths": "Give Vite the ability to resolve imports using TypeScript's path mapping",
     "wait-on": "Wait for a URL to be up. Used to wait for the React app to be ready before starting Electron in `npm start`"
